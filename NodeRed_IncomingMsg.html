@@ -1,0 +1,21 @@
+<template>
+
+</template>
+<script>
+export default {
+    data() {
+        return {
+            variable: null
+        }
+    },
+    mounted() {
+        this.$socket.on('msg-input:' + this.id, function(msg) {
+            if (msg.payload) {
+                this.variable = msg.payload
+                alert(`received message: ${this.variable}`)
+            }
+        }.bind(this))
+    }
+}
+</script>
+

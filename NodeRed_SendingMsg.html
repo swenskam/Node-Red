@@ -1,0 +1,17 @@
+<template>
+    <div>
+        <v-btn @click="sendMessage">Send</v-btn>
+    </div>
+</template>
+<script>
+export default {
+    methods: {
+        sendMessage() {
+            this.send({
+                payload: "Hello from Vue.js!",
+                topic: 'VueJS Topic'
+            })
+        }
+    }
+}
+</script>
