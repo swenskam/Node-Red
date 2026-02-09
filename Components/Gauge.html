@@ -1,7 +1,6 @@
 <template>
   <div class="gauges-container">
     <canvas ref="gaugeOEE" width="250" height="200"></canvas>
-    <canvas ref="gaugePerformance" width="250" height="200"></canvas>
   </div>
 </template>
 
@@ -22,18 +21,6 @@ export default {
             { start: 60, end: 75, color: '#f2ca44' }, // yellow
             { start: 75, end: 100, color: '#4acf4a' } // green
           ]
-        },
-        Performance: {
-          currentValue: 0,
-          targetValue: 0,
-          label: 'Performance',
-          textColor: '#000',
-          arrowColor: '#000',
-          zones: [
-            { start: 0, end: 50, color: '#ff5252' }, // red
-            { start: 50, end: 80, color: '#ffd54f' }, // yellow
-            { start: 80, end: 100, color: '#4caf50' } // green
-          ]
         }
       }
     }
@@ -41,8 +28,7 @@ export default {
   mounted() {
     // Get canvas contexts
     this.ctx = {
-      OEE: this.$refs.gaugeOEE.getContext('2d'),
-      Performance: this.$refs.gaugePerformance.getContext('2d')
+      OEE: this.$refs.gaugeOEE.getContext('2d') // this.$ref.<refName>.getContext('2d') <refName> needs to be the same as the refName up in the <template></template> section
     }
 
     // Listen for Node-RED messages
@@ -123,8 +109,8 @@ export default {
       ctx.fillText(g.label, centerX, centerY - outerRadius - 20)
 
       // Draw numeric value
-      ctx.font = 'bold 40px Arial'
-      ctx.fillText(Math.round(value), centerX, centerY - 40)
+      ctx.font = 'bold 34px Arial'
+      ctx.fillText(value.toFixed(2), centerX, centerY - 40)
 
       // Draw % symbol
       ctx.font = '20px Arial'
