@@ -1,0 +1,54 @@
+<template>
+    <div class="flex-container">
+        <div class="color-box red">1</div>
+        <div class="color-box green">2</div>
+        <div class="color-box blue">3</div>
+    </div>
+</template>
+<script>
+    export default {
+    data() {
+        return {}
+    }
+}
+
+</script>
+<style>
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+        background-color: rgb(244, 244, 171);
+    }
+
+    .color-box {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid black;
+        border-radius: 4px;
+    }
+
+    .red {
+        background-color: red;
+        flex-basis: 150px;
+        flex-shrink: 1;
+        min-width: 40px;
+    }
+
+    .green {
+        background-color: green;
+        flex-basis: 150px;
+        flex-shrink: 0;
+    }
+
+    .blue {
+        background-color: blue;
+        flex-basis: 150px;
+        flex-shrink: 0;
+    }
+</style>
